@@ -14,6 +14,7 @@
 
 int	main(int ac, char **av)
 {
+	hel;
 	t_stack	stack_a;
 	t_stack	stack_b;
 

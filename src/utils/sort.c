@@ -6,7 +6,7 @@
 /*   By: obensarj <obensarj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:31:04 by obensarj          #+#    #+#             */
-/*   Updated: 2025/03/20 17:31:16 by obensarj         ###   ########.fr       */
+/*   Updated: 2025/04/12 22:25:49 by obensarj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	sort(t_stack *a, t_stack *b)
 {
 	if (!a || a->size <= 1)
 		return ;
-	if (is_sorted(a) == 0 && b->size == 0)
+	if (is_sorted(a) == 0)
 		return ;
 	if (a->size == 2)
 		move("sa", a, b);

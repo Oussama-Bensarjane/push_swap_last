@@ -6,7 +6,7 @@
 /*   By: obensarj <obensarj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:29:56 by obensarj          #+#    #+#             */
-/*   Updated: 2025/04/11 00:52:09 by obensarj         ###   ########.fr       */
+/*   Updated: 2025/04/12 22:18:30 by obensarj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	invalid_char(int ac, char **av)
 			while (av[i][j] == ' ' || av[i][j] == '+' || av[i][j] == '-')
 				j++;
 			if (av[i][j] == '\0')
-				break;
+				break ;
 			if (!(av[i][j] >= '0' && av[i][j] <= '9'))
 				(print_error(), exit(1));
 			while (av[i][j] == ' ' || av[i][j] == '+' || av[i][j] == '-')
@@ -101,7 +101,7 @@ int	*stoi(char **args)
 	index = -1;
 	while (args[i])
 		i++;
-	arr = (int *)malloc(i * sizeof(int));
+	arr = malloc(i * sizeof(int));
 	if (!arr)
 	{
 		free_f(args);

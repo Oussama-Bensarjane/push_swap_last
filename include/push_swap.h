@@ -6,7 +6,7 @@
 /*   By: obensarj <obensarj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:13:26 by obensarj          #+#    #+#             */
-/*   Updated: 2025/04/11 19:44:23 by obensarj         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:15:08 by obensarj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,18 @@
 # define RED_COLOR "\033[31m"
 # define END_COLOR "\033[0m"
 
-typedef struct s_stack {
+typedef struct s_stack
+{
 	int	*arr;
 	int	size;
-}				t_stack;
+}	t_stack;
+
+typedef struct s_parse_data
+{
+	int	nbr;
+	int	sign;
+	int	count;
+}	t_parse_data;
 
 void	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
@@ -33,7 +41,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup(const char *s1);
 int		ft_atoi(char *str, char **args, int *arr);
-int		ft_handle_lmax(unsigned long nbr, int sign, int count);
+void	init_parse_data(t_parse_data *data);
 int		is_sorted(t_stack *stack_x);
 void	print_error(void);
 void	free_f(char **arr);

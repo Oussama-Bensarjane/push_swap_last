@@ -6,13 +6,13 @@
 /*   By: obensarj <obensarj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:20:12 by obensarj          #+#    #+#             */
-/*   Updated: 2025/04/10 23:58:00 by obensarj         ###   ########.fr       */
+/*   Updated: 2025/04/12 21:15:18 by obensarj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-int	ft_handle_lmax(unsigned long nbr, int sign, int count)
+int	lmax_handler(unsigned long nbr, int sign, int count)
 {
 	if (nbr > 9223372036854775807 || count >= 20)
 	{
@@ -24,35 +24,38 @@ int	ft_handle_lmax(unsigned long nbr, int sign, int count)
 	return (1);
 }
 
+void	init_parse_data(t_parse_data *data)
+{
+	data->nbr = 0;
+	data->sign = 1;
+	data->count = 0;
+}
+
 int	ft_atoi(char *str, char **args, int *arr)
 {
-	long	nbr;
-	int		sign;
-	int		count;
+	t_parse_data	data;
 
-	nbr = 0;
-	sign = 1;
-	count = 0;
+	init_parse_data(&data);
 	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		str++;
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
-			sign = -1;
+			data.sign = -1;
 		str++;
 	}
 	while (*str)
 	{
 		if (*str >= '0' && *str <= '9')
-			nbr = (nbr * 10) + (*str++ - '0');
-		if (nbr != 0 && !count)
-			count = 1;
-		if (count && ft_handle_lmax(nbr, sign, count++) != 1)
+			data.nbr = (data.nbr * 10) + (*str++ - '0');
+		if (data.nbr != 0 && !data.count)
+			data.count = 1;
+		if (data.count && lmax_handler(data.nbr, data.sign, data.count++) != 1)
 			(free(arr), free_f(args), print_error(), exit(1));
 		if (*str < '0' && *str > '9')
 			(free(arr), free_f(args), print_error(), exit(1));
 	}
-	if ((nbr * sign) > INT_MAX || (nbr * sign) < INT_MIN)
+	if ((data.nbr * data.sign) > INT_MAX || (data.nbr * data.sign) < INT_MIN)
 		(free(arr), free_f(args), print_error(), exit(1));
-	return (nbr * sign);
+	return (data.nbr * data.sign);
 }
